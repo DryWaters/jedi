@@ -1,4 +1,6 @@
-package expression
+package value
+
+import expression.Literal
 
 case class Real(val value: Double) extends Literal with Ordered[Real] with Equals {
   def +(other: Real) = Real(this.value + other.value)
@@ -16,8 +18,4 @@ case class Real(val value: Double) extends Literal with Ordered[Real] with Equal
 
     }
   override def hashCode = this.toString.##
-}
-
-object Real {
-  implicit def realToInt(n: Real) = Integer(Math.round(n.value.floatValue()))
 }
