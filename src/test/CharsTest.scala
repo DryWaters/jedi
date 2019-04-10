@@ -10,10 +10,15 @@ object CharsTest extends App {
   val s4 = s1 + s2 + s3
   val s5 = Chars("California")
   
+  assert(s4 == Chars("California...Dreaming"))
   println("s4 = " + s4)
   
+  assert(s4.substring(Integer(3), Integer(8)) == Chars("iforn"))
   println(s4.substring(Integer(3), Integer(8)))
   
+  assert((s1 < s3))
+  assert((s1 == s5))
+  assert(!(s1 > s3))
   println(s1 + " < " + s3 + " = " + (s1 < s3))
   println(s1 + " == " + s5 + " = " + (s1 == s5))
   
