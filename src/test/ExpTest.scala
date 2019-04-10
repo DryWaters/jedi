@@ -11,4 +11,4 @@ object ExpTest extends App {
   globalEnv.put(pi, num)
   println(pi.execute(globalEnv))
   println(num.execute(globalEnv))
-}
+} 
