@@ -1,17 +1,15 @@
 package value
 
-case class Notification(private val noteType: String) extends Value {
-    override def toString = f"${noteType}"
+case class Notification(private val msg: String) extends Value {
+  println(msg);
+  override def toString = msg
 }
 
 object Notification {
-  
-  val OK = "ok"
-  val DONE = "done"
-  val UNSPECIFIED = "unspecified"
-  
-  def apply(noteType: String) = noteType match {
-    case OK | DONE | UNSPECIFIED => new Notification(noteType)
-    case _ => "Type needs to be either OK, DONE, or UNSPECIFIED" 
-  }
+  def apply(msg: String) = new Notification(msg)
+
+  val OK = new Notification("ok")
+  val DONE = new Notification("done")
+  val UNSPECIFIED = new Notification("unspecified")
+
 }
