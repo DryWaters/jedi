@@ -3,8 +3,8 @@ package test
 import value._
 
 object NotificationTest extends App {
-  Notification.OK
-  Notification.DONE
-  Notification.UNSPECIFIED
-  Notification("WrongType")
+  println(Notification.OK)
+  println(Notification.DONE)
+  println(Notification.UNSPECIFIED)
+  println(Notification("Something else"))
 }
