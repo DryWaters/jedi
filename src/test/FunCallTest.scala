@@ -26,4 +26,8 @@ object FunCallTest extends App {
   val op3 = List(Boole(false))
   exp = FunCall(Identifier("not"), op3)
   println(exp.execute(globalEnvironment))
+  
+  val op4 = List(Integer(6), Integer(10), Integer(20))
+  exp = FunCall(Identifier("add"), op4)
+  println(exp.execute(globalEnvironment))
 }
