@@ -11,6 +11,6 @@ case class Declaration(val identifier: Identifier, val expression: Expression) e
 
     // 2. update env
     env.put(identifier, initVal);
-    Notification.DONE
+    Notification.OK
   }
 }
