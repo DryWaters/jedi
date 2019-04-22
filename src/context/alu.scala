@@ -99,13 +99,13 @@ object alu {
   def less(args: List[Value]): Value = {
     if (args.length != 2) throw new TypeException("less expects two inputs")
     val args2 = args.map(toInt).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0) < args2(1))
+    if (args2.size == args.size) Boole(args2(0).get.value < args2(1).get.value)
     else {
       val args3 = args.map(toReal).filter(_ != None)
-      if (args3.size == args.size) Boole(args3(0) < args3(1))
+      if (args3.size == args.size) Boole(args3(0).get.value < args3(1).get.value)
       else {
         val args4 = args.map(toChars).filter(_ != None)
-        if (args4.size == args.size) Boole(args4(0) < args4(1))
+        if (args4.size == args.size) Boole(args4(0).get.value < args4(1).get.value)
         else throw new TypeException("Inputs to < must be numbers or texts")
       }
     }
@@ -114,13 +114,13 @@ object alu {
   def more(args: List[Value]): Value = {
     if (args.length != 2) throw new TypeException("more expects two inputs")
     val args2 = args.map(toInt).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0) > args2(1))
+    if (args2.size == args.size) Boole(args2(0).get.value > args2(1).get.value)
     else {
       val args3 = args.map(toReal).filter(_ != None)
-      if (args3.size == args.size) Boole(args3(0) > args3(1))
+      if (args3.size == args.size) Boole(args3(0).get.value > args3(1).get.value)
       else {
         val args4 = args.map(toChars).filter(_ != None)
-        if (args4.size == args.size) Boole(args4(0) > args4(1))
+        if (args4.size == args.size) Boole(args4(0).get.value > args4(1).get.value)
         else throw new TypeException("Inputs to > must be numbers or texts")
       }
     }
@@ -128,7 +128,7 @@ object alu {
 
   private def equals(args: List[Value]): Value = {
     val args2 = args.map(toBool).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0) == args2(1))
+    if (args2.size == args.size) Boole(args2(0).get.value == args2(1).get.value)
     else {
       Boole(false)
     }
@@ -136,7 +136,7 @@ object alu {
 
   private def unequals(args: List[Value]): Value = {
     val args2 = args.map(toBool).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0) != args2(1))
+    if (args2.size == args.size) Boole(args2(0).get.value != args2(1).get.value)
     else {
       Boole(false)
     }
