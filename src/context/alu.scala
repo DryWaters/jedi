@@ -99,13 +99,13 @@ object alu {
   def less(args: List[Value]): Value = {
     if (args.length != 2) throw new TypeException("less expects two inputs")
     val args2 = args.map(toInt).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0).get.value < args2(1).get.value)
+    if (args2.size == args.size) Boole(args2(0).get < args2(1).get)
     else {
       val args3 = args.map(toReal).filter(_ != None)
-      if (args3.size == args.size) Boole(args3(0).get.value < args3(1).get.value)
+      if (args3.size == args.size) Boole(args3(0).get < args3(1).get)
       else {
         val args4 = args.map(toChars).filter(_ != None)
-        if (args4.size == args.size) Boole(args4(0).get.value < args4(1).get.value)
+        if (args4.size == args.size) Boole(args4(0).get < args4(1).get)
         else throw new TypeException("Inputs to < must be numbers or texts")
       }
     }
@@ -127,18 +127,27 @@ object alu {
   }
 
   private def equals(args: List[Value]): Value = {
-    val args2 = args.map(toBool).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0).get.value == args2(1).get.value)
+    if (args.length != 2) throw new TypeException("equals expects two inputs")
+    val args2 = args.map(toInt).filter(_ != None)
+    if (args2.size == args.size) Boole(args2(0).get == args2(1).get)
     else {
-      Boole(false)
+      val args3 = args.map(toReal).filter(_ != None)
+      if (args3.size == args.size) Boole(args3(0).get == args3(1).get)
+      else {
+        val args4 = args.map(toChars).filter(_ != None)
+        if (args4.size == args.size) Boole(args4(0).get == args4(1).get)
+        else throw new TypeException("Inputs to == must be numbers or text")
+      }
     }
   }
 
   private def unequals(args: List[Value]): Value = {
-    val args2 = args.map(toBool).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0).get.value != args2(1).get.value)
-    else {
-      Boole(false)
+    if (args.length != 2) throw new TypeException("equals expects two inputs")
+    try {
+      val value = equals(args)
+      !value.asInstanceOf[Boole]
+    } catch {
+      case _: Exception => throw new TypeException("Inputs to != must be numbers or text")
     }
   }
 

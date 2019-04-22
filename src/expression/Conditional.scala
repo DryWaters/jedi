@@ -12,6 +12,5 @@ case class Conditional(val condition: Expression, consequent: Expression, altern
     } else {
       Notification.UNSPECIFIED
     }
-    Notification.OK
   }
 }

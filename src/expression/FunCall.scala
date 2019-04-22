@@ -8,6 +8,5 @@ case class FunCall(val operator: Identifier, val operands: List[Expression]) ext
     val args = operands.map(op => op.execute(env))
     // 2. alu.execute(operator, args)
     alu.execute(operator, args)
-  }
-  
+  } 
 }
