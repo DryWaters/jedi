@@ -54,7 +54,7 @@ object alu {
         val args4 = args.map(toChars).filter(_ != None)
         if (args4.size == args.size) args4.flatten.reduce(_ + _)
         else {
-          throw new TypeException("Inputs to + must be numbers or texts")
+          throw new TypeException("Inputs to + must be numbers or text")
         }
       }
     }
@@ -142,7 +142,7 @@ object alu {
   }
 
   private def unequals(args: List[Value]): Value = {
-    if (args.length != 2) throw new TypeException("equals expects two inputs")
+    if (args.length != 2) throw new TypeException("unequals expects two inputs")
     try {
       val value = equals(args)
       !value.asInstanceOf[Boole]
