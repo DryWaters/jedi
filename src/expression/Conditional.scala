@@ -7,7 +7,7 @@ case class Conditional(val condition: Expression, consequent: Expression, altern
   def execute(env: Environment): Value = {
     if (condition.execute(env).equals(Boole(true))) {
       consequent.execute(env)
-    } else if(alternative != null) {
+    } else if(condition.execute(env).equals(Boole(false)) && alternative != null) {
       alternative.execute(env)
     } else {
       Notification.UNSPECIFIED
