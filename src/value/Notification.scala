@@ -5,9 +5,9 @@ case class Notification(private val msg: String) extends Value {
 }
 
 object Notification {
-  val OK = new Notification("ok")
-  val DONE = new Notification("done")
-  val UNSPECIFIED = new Notification("unspecified")
+  val OK = new Notification("OK")
+  val DONE = new Notification("DONE")
+  val UNSPECIFIED = new Notification("UNSPECIFIED")
 
   def apply(msg: String) = new Notification(msg)
 }
