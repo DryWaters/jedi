@@ -9,13 +9,13 @@ case class Conditional(val condition: Expression, consequent: Expression, altern
     if (!val1.isInstanceOf[Boole]) throw new TypeException("conditions must be Boole-valued")
     val val2 = val1.asInstanceOf[Boole]
     val val3 = val2.value
-    
+
     if (val3) {
       consequent.execute(env)
-    } else if(alternative != null) {
-      alternative.execute(env)
-    } else {
+    } else if (alternative == null) {
       Notification.UNSPECIFIED
+    } else {
+      alternative.execute(env)
     }
   }
 }
