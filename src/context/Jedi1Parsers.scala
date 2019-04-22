@@ -26,14 +26,14 @@ class Jedi1Parsers extends RegexParsers {
     case "if" ~ "(" ~ cond ~ ")" ~ cons ~ Some("else" ~ alt) => Conditional(cond, cons, alt)
   }
 
-  def disjunction: Parser[Expression] = conjunction ~ rep("||" ~> conjunction) ^^ {
-    case con ~ Nil  => con
+  def disjunction: Parser[Expression] = conjunction ~ rep("||" ~> disjunction) ^^ {
+    case con ~ Nil => con
     case con ~ more => Disjunction(con :: more)
   }
 
   //   conjunction ::= equality ~ ("&&" ~ equality)*
   def conjunction: Parser[Expression] = equality ~ rep("&&" ~> equality) ^^ {
-    case con ~ Nil  => con
+    case con ~ Nil => con
     case con ~ more => Conjuction(con :: more)
   }
 

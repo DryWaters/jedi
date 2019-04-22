@@ -9,7 +9,7 @@ case class Disjunction(val operands: List[Expression]) extends SpecialForm {
       if (unseen == Nil || value.value == true) value
       else helper(value || unseen.head.execute(env).asInstanceOf[Boole], unseen.tail)
     }
-    helper(Boole(true), operands)
+    helper(operands(0).asInstanceOf[Boole], operands.tail)
   }
   
 }

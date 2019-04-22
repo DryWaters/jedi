@@ -9,6 +9,6 @@ case class Conjuction(val operands: List[Expression]) extends SpecialForm {
       if (unseen == Nil || value.value == false) value
       else helper(value && unseen.head.execute(env).asInstanceOf[Boole], unseen.tail)
     }
-    helper(Boole(true), operands)
+    helper(operands(0).asInstanceOf[Boole], operands.tail)
   }
 }

@@ -162,6 +162,4 @@ object alu {
   def write(vals: List[Value]): Value = { println(vals(0)); Notification.DONE }
   def read(vals: List[Value]): Value = { val result = io.StdIn.readDouble(); Real(result) }
   def prompt(vals: List[Value]): Value = { print("=> "); Notification.DONE }
-
-  // etc.
 }
