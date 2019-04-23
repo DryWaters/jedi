@@ -117,8 +117,8 @@ class Jedi1Parsers extends RegexParsers {
 
   // operands ::= "(" ~ (expression ~ ("," ~ expression)*)? ~ ")"
   def operands: Parser[List[Expression]] = "(" ~> expression ~ opt(rep("," ~> expression)) <~ ")" ^^ {
-    case expression ~ None          => List(expression)
-    case expression ~ Some(moreExp) => List(expression) ++ moreExp
+    case expression ~ None          => expression :: Nil
+    case expression ~ Some(moreExp) => expression :: moreExp
   }
 
 }
