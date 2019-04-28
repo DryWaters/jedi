@@ -136,7 +136,7 @@ object alu {
       else {
         val args4 = args.map(toChars).filter(_ != None)
         if (args4.size == args.size) Boole(args4(0).get == args4(1).get)
-        else throw new TypeException("Inputs to == must be numbers or texts")
+        else Boole(false)
       }
     }
   }

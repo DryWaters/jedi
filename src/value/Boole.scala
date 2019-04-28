@@ -3,8 +3,8 @@ package value
 import expression.Literal
 
 case class Boole(val value: Boolean) extends Literal with Equals {
-  def &&(other: Boole) = if (this.value == false || other.value == false) Boole(false) else Boole(true)
-  def ||(other: Boole) = if (this.value == true || other.value == true) Boole(true) else Boole(false)
+  def &&(other: Boole) = Boole(value && other.value)
+  def ||(other: Boole) = Boole(value || other.value)
   def unary_! = Boole(!value)
   override def toString = value.toString
   override def canEqual(other: Any) = other.isInstanceOf[Boole]

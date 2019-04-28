@@ -9,6 +9,7 @@ object CharsTest extends App {
   val s3 = Chars("Dreaming")
   val s4 = s1 + s2 + s3
   val s5 = Chars("California")
+  val s6 = Chars("california")
   
   assert(s4 == Chars("California...Dreaming"))
   println("s4 = " + s4)
@@ -20,6 +21,8 @@ object CharsTest extends App {
   assert((s1 == s5))
   assert(!(s1 > s3))
   println(s1 + " < " + s3 + " = " + (s1 < s3))
+  println(s1 + " > " + s3 + " = " + (s1 > s3))
   println(s1 + " == " + s5 + " = " + (s1 == s5))
-  
+  println(s1 + " > " + s6 + " = " + (s1 > s6))
+  println(s1 + " < " + s6 + " = " + (s1 < s6))
 }
