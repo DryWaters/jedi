@@ -31,6 +31,5 @@ class Jedi2Parsers extends Jedi1Parsers {
   
   
   // override of term parser
-//  override def term: Parser[Expression]  = lambda | funCall | block | literal | "("~>expression<~")"
-  override def term: Parser[Expression]  = funCall | block | literal | "("~>expression<~")"
+  override def term: Parser[Expression]  = lambda | funCall | block | literal | "("~>expression<~")"
 }
