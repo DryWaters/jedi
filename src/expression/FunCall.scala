@@ -7,9 +7,9 @@ case class FunCall(val operator: Identifier, val operands: List[Expression]) ext
   def execute(env: Environment) = {
 
     val args = operands.map(op => op.execute(env))
-    if (env.contains(operator)) {
-      val closure = env.apply(operator).asInstanceOf[Closure]
-      closure.apply(args)
+    if (env.contains(operator) && env(operator).isInstanceOf[Closure]) {
+      val closure = env(operator).asInstanceOf[Closure]
+      closure(args)
     } else {
       alu.execute(operator, args)
     }
