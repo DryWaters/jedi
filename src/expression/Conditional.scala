@@ -3,7 +3,7 @@ package expression
 import context._
 import value._
 
-case class Conditional(val condition: Expression, consequent: Expression, alternative: Expression = null) extends SpecialForm {
+case class Conditional(val condition: Expression, val consequent: Expression, val alternative: Expression = null) extends SpecialForm {
   def execute(env: Environment): Value = {
     val val1 = condition.execute(env)
     if (!val1.isInstanceOf[Boole]) throw new TypeException("conditions must be Boole-valued")
