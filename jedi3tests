@@ -1,0 +1,21 @@
+def count = var(0)
+count
+[count]
+
+def incCount = lambda() count = [count] + 1
+
+incCount()
+incCount()
+count
+
+def scores = store(85, 23, 99, 56)
+scores
+get(1, scores)
+put(60, 2, scores)
+scores
+
+def scores2 = map(lambda(x) x + 1, scores)
+scores2
+
+def scores3 = filter(lambda(x) 70 < x, scores2)
+scores3
