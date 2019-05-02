@@ -125,7 +125,7 @@ object alu {
    
    // size(s: Store) calls s.size
    private def size(args: List[Value]) = {
-     if (args.size != 2)
+     if (args.size != 1)
        throw new TypeException("expected signature: size(s: Store)")
      if (!args(0).isInstanceOf[Store])
        throw new TypeException("expected signature: size(Store)")
