@@ -14,7 +14,7 @@ class Jedi3Parsers extends Jedi2Parsers {
 
   // iteration ::= "while" ~ "(" ~ expression ~ ")" ~ expression
   def iteration: Parser[Iteration] = "while" ~ "(" ~ expression ~ ")" ~ expression ^^ {
-    case "white" ~ "(" ~ cond ~ ")" ~ body => Iteration(cond, body) 
+    case "while" ~ "(" ~ cond ~ ")" ~ body => Iteration(cond, body) 
   }
 
   // dereference ::= "[" ~ expression ~ "]"
