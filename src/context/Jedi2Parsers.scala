@@ -9,9 +9,10 @@ class Jedi2Parsers extends Jedi1Parsers {
   // params parser
   // a parameter list is zero or more comma-separated identifiers bracketed by parentheses:
   // params ::= "(" ~ (identifier ~ ("," ~ identifier)*)? ~ ")"
-    def params: Parser[List[Identifier]] = "(" ~> identifier ~ opt(rep("," ~> identifier)) <~ ")" ^^ {
-    case identifier ~ None          => identifier :: Nil
-    case identifier ~ Some(moreIdentifiers) => identifier :: moreIdentifiers
+    def params: Parser[List[Identifier]] = "(" ~> opt(identifier) ~ opt(rep("," ~> identifier)) <~ ")" ^^ {
+      case Some(identifier) ~ None          => identifier :: Nil
+      case Some(identifier) ~ Some(moreIdentifiers) => identifier :: moreIdentifiers
+      case _ => Nil
   }
   
   // lambda parser
