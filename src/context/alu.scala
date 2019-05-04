@@ -239,18 +239,11 @@ object alu {
   }
 
   private def equals(args: List[Value]): Value = {
-    if (args.length != 2) throw new TypeException("equals expects two inputs")
-    val args2 = args.map(toInt).filter(_ != None)
-    if (args2.size == args.size) Boole(args2(0).get == args2(1).get)
-    else {
-      val args3 = args.map(toReal).filter(_ != None)
-      if (args3.size == args.size) Boole(args3(0).get == args3(1).get)
-      else {
-        val args4 = args.map(toChars).filter(_ != None)
-        if (args4.size == args.size) Boole(args4(0).get == args4(1).get)
-        else Boole(false)
-      }
+    var result = true
+    for (i <- 1 until args.length if result) {
+      result = (args(0) == args(i))
     }
+    Boole(result)
   }
 
   private def unequals(args: List[Value]): Value = {

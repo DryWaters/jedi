@@ -16,3 +16,4 @@ pi * e + sum
 if (sum < 19) nada else 3
 3 < 4 && 1 + 1 == 2 && sum < 19 && nada
 4 < 3 || 1 + 1 != 2 || sum < 19 ||  true || nada
+3 == 2 + 1 == 9 / 3
