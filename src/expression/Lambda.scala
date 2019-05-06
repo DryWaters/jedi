@@ -7,5 +7,4 @@ case class Lambda(val parameters: List[Identifier], val body: Expression) extend
   def execute(env: Environment) = {
     new Closure(env, body, parameters)
   }
-  
 }
